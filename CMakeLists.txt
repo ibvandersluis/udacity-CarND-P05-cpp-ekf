@@ -5,4 +5,4 @@ include_directories(
   /usr/include/eigen3/
 )
 
-add_executable(kalman_filter src/kalman_filter.cpp)
+add_executable(kalman_filter_1d src/kalman_filter_1d.cpp)
