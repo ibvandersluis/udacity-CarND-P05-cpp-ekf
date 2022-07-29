@@ -19,6 +19,8 @@ public:
    */
   virtual ~KalmanFilter();
 
+  // TODO: Add Init()
+
   /**
    * Predict Predicts the state and the state covariance
    *   using the process model
@@ -30,6 +32,8 @@ public:
    * @param z The measurement at k+1
    */
   void Update(const VectorXd & z);
+
+  // TODO: Add UpdateEKF()
 
   // state vector
   VectorXd x_;
