@@ -40,4 +40,9 @@ void KalmanFilter::Update(const VectorXd & z)
   P_ = (I - K * H_) * P_;
 }
 
-// TODO: Add UpdateEKF()
+void KalmanFilter::UpdateEKF(const VectorXd & z)
+{
+  /**
+   * TODO: update the state by using Extended Kalman Filter equations
+   */
+}
