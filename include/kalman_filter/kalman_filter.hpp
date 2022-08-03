@@ -48,7 +48,7 @@ public:
    * Updates the state by using Extended Kalman Filter equations
    * @param z The measurement at k+1
    */
-  void UpdateEKF(const VectorXd & z);
+  void UpdateEKF(const VectorXd & z, MatrixXd & Hj);
 
   // state vector
   VectorXd x_;
