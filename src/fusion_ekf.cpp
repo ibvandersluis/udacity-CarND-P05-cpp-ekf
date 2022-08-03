@@ -32,13 +32,32 @@ FusionEKF::FusionEKF()
   //measurement covariance matrix - radar
   R_radar_ << 0.09, 0, 0, 0, 0.0009, 0, 0, 0, 0.09;
 
+  // laser measurement matrix
+  H_laser_ << 1, 0, 0, 0, 0, 1, 0, 0;
+
   /**
    * TODO: Finish initializing the FusionEKF.
    * TODO: Set the process and measurement noises
    */
 
-  // laser measurement matrix
-  H_laser_ << 1, 0, 0, 0, 0, 1, 0, 0;
+  /**
+   * Initialize ekf_ members
+   */
+
+  // create a 4D state vector, we don't know yet the values of the x state
+  ekf_.x_ = VectorXd(4);
+
+  // state covariance matrix P
+  ekf_.P_ = MatrixXd(4, 4);
+  ekf_.P_ << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 1000;
+
+  // measurement matrix
+  ekf_.H_ = MatrixXd(2, 4);
+  ekf_.H_ << 1, 0, 0, 0, 0, 1, 0, 0;
+
+  // the initial transition matrix F_
+  ekf_.F_ = MatrixXd(4, 4);
+  ekf_.F_ << 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1;
 }
 
 /**
@@ -59,7 +78,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage & measurement_pack)
 
     // first measurement
     cout << "EKF: " << endl;
-    ekf_.x_ = VectorXd(4);
     float px = 0.0;
     float py = 0.0;
 
