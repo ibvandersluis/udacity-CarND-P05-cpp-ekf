@@ -56,6 +56,7 @@ void KalmanFilter::UpdateEKF(const VectorXd & z, MatrixXd & Hj)
 
   VectorXd y = z - h_x_prime;
 
+  // Normalize angle to within [-PI,PI]
   while (abs(y[1]) > M_PI) {
     if (y[1] < 0.0) {
       y[1] += (2 * M_PI);
