@@ -82,9 +82,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage & measurement_pack)
       float rho = measurement_pack.raw_measurements_[0];
       float phi = measurement_pack.raw_measurements_[1];
 
-      // φ=atan(py/px)
-      px = rho * sin(phi);
-      py = -rho * cos(phi);
+      // Convert polar to cartesian coordinates
+      px = rho * cos(phi);
+      py = rho * sin(phi);
 
     } else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // set the state with the initial location and zero velocity
