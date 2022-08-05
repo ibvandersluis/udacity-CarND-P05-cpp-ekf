@@ -13,3 +13,12 @@ add_executable(kalman_filter
   src/kalman_filter.cpp
   src/tracking.cpp
 )
+
+add_executable(ekf
+  src/ekf_main.cpp
+  src/fusion_ekf.cpp
+  src/kalman_filter.cpp
+  src/tools.cpp
+)
+
+target_link_libraries(ekf uWS z)

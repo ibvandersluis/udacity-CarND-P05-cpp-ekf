@@ -51,7 +51,9 @@ void KalmanFilter::UpdateEKF(const VectorXd & z, MatrixXd & Hj)
   float phi = atan2(p_prime_y, p_prime_x);
   float rho_dot = (p_prime_x * v_prime_x + p_prime_y * v_prime_y) / rho;
 
-  VectorXd h_x_prime(rho, phi, rho_dot);
+  VectorXd h_x_prime(3);
+  h_x_prime << rho, phi, rho_dot;
+
   VectorXd y = z - h_x_prime;
   MatrixXd Hjt = Hj.transpose();
   MatrixXd S = Hj * P_ * Hjt + R_;
