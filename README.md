@@ -12,7 +12,7 @@ Kalman filters help us combine a prediction and a measurement with an accurate e
 
 ![Kalman Filter Diagram](https://user-images.githubusercontent.com/14826664/183124896-905e2ab1-f582-4895-9d81-381d0c14a312.png)
 
-By applying these concepts to a 2D measurement space and using different prediction equations for each sensor, we can track an object as it moves around a plane.
+By applying these concepts to a 2D measurement space and using different update equations for each sensor, we can accurately track an object as it moves around a plane.
 
 ## Requirements
 
