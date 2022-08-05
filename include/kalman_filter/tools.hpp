@@ -30,11 +30,6 @@ public:
    * A helper method to calculate Jacobians.
    */
   Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd & x_state);
-
-  /**
-   * A helper method to normalize angles between -pi and pi
-   */
-  float NormalizeAngle(const float & angle);
 };
 
 #endif  // KALMAN_FILTER__TOOLS_HPP_
